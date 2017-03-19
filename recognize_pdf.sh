@@ -29,5 +29,5 @@ for i in $(seq 1 $PAGES); do
 done
 
 echo "Combining searchable PDFs into one file..."
-python "$JOINSCRIPT" -o "$OUTPUTFILE"_ocr.pdf "$OUTPUTDIR/$OUTPUTFILE"*.pdf && rm -r $OUTPUTDIR && rm -r $TEMPDIR
+gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile="$OUTPUTFILE"_ocr.pdf "$OUTPUTDIR/$OUTPUTFILE"*.pdf && rm -r $OUTPUTDIR && rm -r $TEMPDIR
 echo "All done. Output file name is :$OUTPUTFILE"_ocr.pdf
